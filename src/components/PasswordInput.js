@@ -25,7 +25,7 @@ export default function PasswordInput() {
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 20 20"
-              fill="currentColor"
+              fill="#8A8A8A"
               class="w-5 h-5"
             >
               <path
@@ -39,7 +39,7 @@ export default function PasswordInput() {
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 20 20"
-              fill="currentColor"
+              fill="#8A8A8A"
               className="w-5 h-5"
             >
               <path d="M10 12.5a2.5 2.5 0 100-5 2.5 2.5 0 000 5z" />
