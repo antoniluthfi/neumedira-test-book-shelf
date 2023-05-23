@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import ArrowDownIcon from "~/icons/arrow-down.svg";
 import ArrowUpIcon from "~/icons/arrow-up.svg";
@@ -8,10 +8,25 @@ import { AppContext } from "@/context/AppContext";
 export default function ProfileShortcut() {
   const { dispatch } = useContext(AppContext);
   const [showOptions, setShowOptions] = useState(false);
+  const profileRef = useRef(null);
+
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (profileRef.current && !profileRef.current.contains(event.target)) {
+        setShowOptions(false);
+      }
+    }
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [profileRef]);
 
   return (
     <div className="w-[20%] h-[49px] rounded-[40px] border-2 bg-white border-gray-200">
       <div
+        ref={profileRef}
         onClick={() => setShowOptions((prev) => !prev)}
         className="flex justify-between items-center cursor-pointer"
       >

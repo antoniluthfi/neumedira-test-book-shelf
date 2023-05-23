@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import ArrowDownIcon from "~/icons/arrow-down.svg";
 import ArrowUpIcon from "~/icons/arrow-up.svg";
 import SearchIcon from "~/icons/search.svg";
@@ -6,10 +6,25 @@ import BarcodeIcon from "~/icons/barcode.svg";
 
 export default function SearchBar() {
   const [showOptions, setShowOptions] = useState(false);
+  const categoryRef = useRef(null);
+
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (categoryRef.current && !categoryRef.current.contains(event.target)) {
+        setShowOptions(false);
+      }
+    }
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [categoryRef]);
 
   return (
     <div className="w-[50%] h-[49px] rounded-[40px] border-2 bg-white border-gray-200 flex items-center">
       <div
+        ref={categoryRef}
         onClick={() => setShowOptions((prev) => !prev)}
         className="flex justify-center items-center gap-[10px] w-[20%] h-full bg-[#F7F7FA] rounded-bl-[40px] rounded-tl-[40px] cursor-pointer"
       >
