@@ -5,8 +5,11 @@ import MyShelfIcon from "~/icons/my-shelf.svg";
 import ContributeIcon from "~/icons/contribute.svg";
 import HomeIcon from "~/icons/home.svg";
 import SearchIcon from "~/icons/search.svg";
+import { usePathname } from "next/navigation";
 
 export default function Sidebar() {
+  const pathname = usePathname();
+
   return (
     <div className="bg-white basis-[20%] min-h-screen rounded-bl-[10px] rounded-tl-[10px] py-5 px-14">
       <Image
@@ -21,36 +24,48 @@ export default function Sidebar() {
         <li>
           <Link
             href="/"
-            className="flex gap-3 items-center text-[#8A8A8A] text-[20px] leading-6"
+            className={`flex gap-3 items-center ${
+              pathname === "/" ? "text-[#4D4D4D]" : "text-[#8A8A8A]"
+            } text-[20px] leading-6`}
           >
-            <HomeIcon fill="#8A8A8A" />
+            <HomeIcon fill={pathname === "/" ? "#4D4D4D" : "#8A8A8A"} />
             Home
           </Link>
         </li>
         <li>
           <Link
             href="/search"
-            className="flex gap-3 items-center text-[#8A8A8A] text-[20px] leading-6"
+            className={`flex gap-3 items-center ${
+              pathname === "/search" ? "text-[#4D4D4D]" : "text-[#8A8A8A]"
+            } text-[20px] leading-6`}
           >
-            <SearchIcon fill="#8A8A8A" />
+            <SearchIcon fill={pathname === "/search" ? "#4D4D4D" : "#8A8A8A"} />
             Search
           </Link>
         </li>
         <li>
           <Link
             href="/my-shelf"
-            className="flex gap-3 items-center text-[#8A8A8A] text-[20px] leading-6"
+            className={`flex gap-3 items-center ${
+              pathname === "/my-shelf" ? "text-[#4D4D4D]" : "text-[#8A8A8A]"
+            } text-[20px] leading-6`}
           >
-            <MyShelfIcon fill="#8A8A8A" />
+            <MyShelfIcon
+              fill={pathname === "/my-shelf" ? "#4D4D4D" : "#8A8A8A"}
+            />
             My Shelf
           </Link>
         </li>
         <li>
           <Link
             href="/contribute"
-            className="flex gap-3 items-center text-[#8A8A8A] text-[20px] leading-6"
+            className={`flex gap-3 items-center ${
+              pathname === "/contribute" ? "text-[#4D4D4D]" : "text-[#8A8A8A]"
+            } text-[20px] leading-6`}
           >
-            <ContributeIcon fill="#8A8A8A" />
+            <ContributeIcon
+              fill={pathname === "/contribute" ? "#4D4D4D" : "#8A8A8A"}
+            />
             Contribute
           </Link>
         </li>
