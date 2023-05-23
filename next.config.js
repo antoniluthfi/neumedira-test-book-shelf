@@ -28,6 +28,12 @@ const nextConfig = {
         port: "",
         pathname: "/640/480/**",
       },
+      {
+        protocol: "https",
+        hostname: "robohash.org",
+        port: "",
+        pathname: "/**",
+      },
     ],
   },
   // SVGR
