@@ -12,6 +12,11 @@ const nextConfig = {
           destination:
             "https://643e8199c72fda4a0bf883df.mockapi.io/api/v1/books",
         },
+        {
+          source: "/api/books/detail/:path*",
+          destination:
+            "https://643e8199c72fda4a0bf883df.mockapi.io/api/v1/books/:path*",
+        },
       ],
     };
   },
