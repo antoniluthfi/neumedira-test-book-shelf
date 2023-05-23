@@ -10,7 +10,7 @@ export default function BookCard({
   description,
 }) {
   return (
-    <div className="w-full h-[260px] bg-white rounded-[10px] p-4 flex justify-between gap-5">
+    <div className="w-full h-[260px] bg-white rounded-[10px] p-4 flex justify-between gap-5 hover:scale-105 ease-in-out duration-300">
       <div>
         <div className="xl:w-[123px] xl:h-[170px] 2xl:w-[100px] 2xl:h-[150px] border-[1px] rounded-[5px] flex items-center mb-3">
           <Image
