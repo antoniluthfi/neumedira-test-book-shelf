@@ -3,10 +3,12 @@
 import BookCard from "@/components/BookCard";
 import Categories from "@/components/Categories";
 import Loading from "@/components/Loading";
-import { getAllBooks } from "@/utils/book";
-import { useEffect, useState } from "react";
+import { AppContext } from "@/context/AppContext";
+import { bookFilter, getAllBooks } from "@/utils/book";
+import { useContext, useEffect, useState } from "react";
 
 export default function Search() {
+  const { searchBookKeyword } = useContext(AppContext);
   const [loading, setLoading] = useState(false);
   const [books, setBooks] = useState([]);
 
@@ -40,9 +42,11 @@ export default function Search() {
       ) : (
         <div className="grid gap-8 xl:grid-cols-3 2xl:grid-cols-4 mt-[34px]">
           {books.length > 0 &&
-            books.map((book, i) => (
-              <BookCard key={`${i}_${book?.id}`} {...book} />
-            ))}
+            books
+              .filter((book) => bookFilter(book, searchBookKeyword))
+              .map((book, i) => (
+                <BookCard key={`${i}_${book?.id}`} {...book} />
+              ))}
         </div>
       )}
     </div>

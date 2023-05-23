@@ -8,7 +8,7 @@ import { AppContext } from "@/context/AppContext";
 import { getCookie } from "@/utils/cookie";
 
 export default function Login() {
-  const { state, dispatch } = useContext(AppContext);
+  const { auth, dispatch } = useContext(AppContext);
   const username = "kminchelle";
   // "email": "kminchelle@qq.com",
   // "password": "0lelplR"
@@ -77,14 +77,14 @@ export default function Login() {
               className="h-14 w-full rounded-lg border-[1px] border-[#DCD9D9] px-4 focus:outline-none"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              disabled={state.isLoading}
+              disabled={auth.isLoading}
             />
           </div>
 
           <PasswordInput
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            disabled={state.isLoading}
+            disabled={auth.isLoading}
           />
 
           <div className="flex justify-between mt-[50px]">
@@ -96,7 +96,7 @@ export default function Login() {
                 className="mr-2 h-4 w-4 rounded border-gray-300 bg-[#DF7D3A] focus:ring-0 focus:ring-offset-0"
                 defaultChecked={checked}
                 onChange={() => setChecked((prev) => !prev)}
-                disabled={state.isLoading}
+                disabled={auth.isLoading}
               />
               <label htmlFor="remember-me" className="text-[#4D4D4D] text-base">
                 Remember Me
@@ -115,7 +115,7 @@ export default function Login() {
             type="submit"
             className="w-full h-12 bg-[#FA7C54] hover:bg-[#d87557] mt-[42px] text-white rounded-lg flex justify-center items-center"
           >
-            {state.isLoading && (
+            {auth.isLoading && (
               <svg
                 aria-hidden="true"
                 role="status"

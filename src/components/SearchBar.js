@@ -1,10 +1,12 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import ArrowDownIcon from "~/icons/arrow-down.svg";
 import ArrowUpIcon from "~/icons/arrow-up.svg";
 import SearchIcon from "~/icons/search.svg";
 import BarcodeIcon from "~/icons/barcode.svg";
+import { AppContext } from "@/context/AppContext";
 
 export default function SearchBar() {
+  const { searchBookKeyword, setSearchBookKeyword } = useContext(AppContext);
   const [showOptions, setShowOptions] = useState(false);
   const categoryRef = useRef(null);
 
@@ -59,6 +61,8 @@ export default function SearchBar() {
         type="text"
         placeholder="Search"
         className="w-[65%] h-full pl-4 focus:outline-none"
+        value={searchBookKeyword}
+        onChange={(e) => setSearchBookKeyword(e.target.value)}
       />
       <div className="w-[20%] h-full flex justify-center items-center gap-[11px]">
         <button>
