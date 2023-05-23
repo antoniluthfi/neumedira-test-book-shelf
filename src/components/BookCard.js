@@ -1,7 +1,9 @@
 import React from "react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 export default function BookCard({
+  id,
   Title,
   author,
   image,
@@ -9,10 +11,17 @@ export default function BookCard({
   published,
   description,
 }) {
+  const router = useRouter();
+
   return (
     <div className="w-full h-[260px] bg-white rounded-[10px] p-4 flex justify-between gap-5 hover:scale-105 ease-in-out duration-300">
       <div>
-        <div className="xl:w-[123px] xl:h-[170px] 2xl:w-[100px] 2xl:h-[150px] border-[1px] rounded-[5px] flex items-center mb-3">
+        <div
+          className="xl:w-[123px] xl:h-[170px] 2xl:w-[100px] 2xl:h-[150px] border-[1px] rounded-[5px] flex items-center mb-3 cursor-pointer"
+          onClick={() => {
+            router.push(`/details/${id}`)
+          }}
+        >
           <Image
             src={image}
             width={123}
@@ -26,8 +35,8 @@ export default function BookCard({
         <p className="text-[#4D4D4D] xl:text-xs 2xl:text-[11px]">{Title}</p>
         <p className="text-[#4D4D4D] text-[10px]">{author}</p>
         <p className="text-[#4D4D4D] text-[10px]">
-          {/* 4.5<span className="text-[#A7A7A7]">/5</span> */}
-          {rating}
+          4.5<span className="text-[#A7A7A7]">/5</span>
+          {/* {rating} */}
         </p>
       </div>
 
@@ -49,9 +58,11 @@ export default function BookCard({
           <p className="text-white text-sm font-semibold">Borrowed</p>
         </div>
 
-        <button className="w-full h-10 rounded-[5px] border-[1px] border-[#F76B56] flex justify-center items-center">
-          <p className="text-[#F76B56] text-sm font-semibold">Return</p>
-        </button>
+        <input
+          type="submit"
+          className="w-full h-10 rounded-[5px] border-[1px] border-[#F76B56] flex justify-center items-center hover:bg-[#F76B56] text-[#F76B56] text-sm font-semibold hover:text-white cursor-pointer"
+          value="Return"
+        />
       </div>
     </div>
   );
