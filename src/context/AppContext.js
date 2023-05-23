@@ -2,7 +2,7 @@
 
 import { createSession } from "@/utils/auth";
 import { getCookie } from "@/utils/cookie";
-import React, { createContext, useEffect, useReducer } from "react";
+import React, { createContext, useEffect, useReducer, useState } from "react";
 
 const initialState = {
   data: {
@@ -69,12 +69,13 @@ const reducer = (state, action) => {
 };
 
 export const AppContext = createContext({
-  state: initialState,
+  auth: initialState,
   dispatch: () => null,
 });
 
 export const AppContextProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(reducer, initialState);
+  const [auth, dispatch] = useReducer(reducer, initialState);
+  const [searchBookKeyword, setSearchBookKeyword] = useState("");
   const token = getCookie("token") || sessionStorage.getItem("token");
 
   const authenticateUser = () => {
@@ -124,7 +125,9 @@ export const AppContextProvider = ({ children }) => {
   }, [token]);
 
   return (
-    <AppContext.Provider value={{ state, dispatch }}>
+    <AppContext.Provider
+      value={{ auth, searchBookKeyword, setSearchBookKeyword, dispatch }}
+    >
       {children}
     </AppContext.Provider>
   );

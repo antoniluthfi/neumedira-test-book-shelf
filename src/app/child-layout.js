@@ -7,24 +7,24 @@ import Sidebar from "@/components/Sidebar";
 import Navbar from "@/components/Navbar";
 
 export default function ChildLayout({ children }) {
-  const { state } = useContext(AppContext);
+  const { auth } = useContext(AppContext);
   const pathname = usePathname();
   const router = useRouter();
 
   useEffect(() => {
     if (!pathname) return;
-    if (state.isAuthenticated) {
+    if (auth.isAuthenticated) {
       router.replace(pathname === "/login" ? "/" : pathname);
       return;
     } else {
       router.replace("/login");
       return;
     }
-  }, [state.isAuthenticated, pathname]);
+  }, [auth.isAuthenticated, pathname]);
 
   return (
     <div className="bg-[url('/images/login-bg.png')] bg-cover bg-no-repeat w-full h-full">
-      {!!state.isAuthenticated ? (
+      {!!auth.isAuthenticated ? (
         <div className="p-10 flex">
           <Sidebar />
 
