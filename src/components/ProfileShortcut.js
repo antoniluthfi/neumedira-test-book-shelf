@@ -6,7 +6,7 @@ import { logout } from "@/utils/auth";
 import { AppContext } from "@/context/AppContext";
 
 export default function ProfileShortcut() {
-  const { dispatch } = useContext(AppContext);
+  const { auth, dispatch } = useContext(AppContext);
   const [showOptions, setShowOptions] = useState(false);
   const profileRef = useRef(null);
 
@@ -31,14 +31,15 @@ export default function ProfileShortcut() {
         className="flex justify-between items-center cursor-pointer"
       >
         <Image
-          src="/images/user.png"
+          src={auth?.data?.image}
           width={45}
           height={45}
           alt="User"
           loading="lazy"
+          className="rounded-full"
         />
 
-        <p className="text-[20px] text-[#4D4D4D]">Kenson</p>
+        <p className="text-[20px] text-[#4D4D4D]">{auth?.data?.username}</p>
         <button className="w-[15%]">
           {showOptions ? <ArrowDownIcon /> : <ArrowUpIcon />}
         </button>
