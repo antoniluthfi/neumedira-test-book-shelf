@@ -29,7 +29,7 @@ export default function Search() {
   return (
     <div>
       <h2 className="text-[25px] text-[#4D4D4D] font-bold mt-9 mb-[37px]">
-        Your <span className="text-[#EF8361]">Shelf</span>
+        Search <span className="text-[#EF8361]">Books</span>
       </h2>
       <Categories />
 
