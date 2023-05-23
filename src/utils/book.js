@@ -13,3 +13,10 @@ export async function getAllBooks() {
     return [];
   }
 }
+
+export function bookFilter(book, keyword) {
+  return (
+    book?.Title?.toLowerCase()?.match(keyword?.toLowerCase()) ||
+    book?.author?.toLowerCase()?.match(keyword?.toLowerCase())
+  );
+}
