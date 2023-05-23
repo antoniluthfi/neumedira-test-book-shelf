@@ -40,7 +40,7 @@ export default function Home() {
           <Loading />
         </div>
       ) : (
-        <div className="grid gap-8 xl:grid-cols-3 2xl:grid-cols-4 mt-[34px]">
+        <div className="grid gap-8 xl:grid-cols-3 2xl:grid-cols-4 mt-[34px] overflow-y-scroll max-h-[420px]">
           {books.length > 0 &&
             books
               .filter((book) => bookFilter(book, searchBookKeyword))
