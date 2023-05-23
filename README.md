@@ -18,17 +18,81 @@ You can start editing the page by modifying `app/page.js`. The page auto-updates
 
 This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-## Learn More
+## Deployment
+You can see the deployed version of this app here
+1. [https://neumedira-test-book-shelf.vercel.app](https://neumedira-test-book-shelf.vercel.app)
+1. [https://neumedira-test-book-shelf-antoniluthfi.vercel.app](https://neumedira-test-book-shelf-antoniluthfi.vercel.app)
+1. [https://neumedira-test-book-shelf-git-main-antoniluthfi.vercel.app](https://neumedira-test-book-shelf-git-main-antoniluthfi.vercel.app)
 
-To learn more about Next.js, take a look at the following resources:
+## Backend API
+Below are some apis that i use from Neumedira:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- ### Login
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Endpoint
+```bash
+POST https://dummyjson.com/auth/login
+```
+Body
+```json
+{
+    "username": "kminchelle",
+    "email": "kminchelle@qq.com", // use this to bypass the login form only as the requirement from the design
+    "password": "0lelplR"
+}
+```
+Example Response
+```json
+{
+    "id": 15,
+    "username": "kminchelle",
+    "email": "kminchelle@qq.com",
+    "firstName": "Jeanne",
+    "lastName": "Halvorson",
+    "gender": "female",
+    "image": "https://robohash.org/autquiaut.png",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTUsInVzZXJuYW1lIjoia21pbmNoZWxsZSIsImVtYWlsIjoia21pbmNoZWxsZUBxcS5jb20iLCJmaXJzdE5hbWUiOiJKZWFubmUiLCJsYXN0TmFtZSI6IkhhbHZvcnNvbiIsImdlbmRlciI6ImZlbWFsZSIsImltYWdlIjoiaHR0cHM6Ly9yb2JvaGFzaC5vcmcvYXV0cXVpYXV0LnBuZyIsImlhdCI6MTY4NDgxODk1MSwiZXhwIjoxNjg0ODIyNTUxfQ.jUjl0TLrMhJ5gEAqsdDnngLZ8DArrrTAD72yirQ8nYk"
+}
+```
+- ### Get All Books
+Endpoint
+```bash
+GET https://643e8199c72fda4a0bf883df.mockapi.io/api/v1/books
+```
+Example Response
+```json
+[
+    {
+        "Title": "consectetur",
+        "author": "Mrs. Vera Hilll",
+        "image": "https://loremflickr.com/640/480/business",
+        "rating": 63,
+        "published": "1966-03-30T10:13:50.670Z",
+        "description": "Accusamus quia provident in. Deserunt ipsam quae tenetur expedita officiis culpa. Omnis alias voluptate ullam similique nulla aliquam doloribus. Quae iste totam minima beatae architecto laboriosam voluptas. Voluptatum nemo quos dolorum porro sunt. Pariatur a ducimus unde aperiam esse ea ipsam animi iusto.",
+        "id": "1"
+    },
+]
+```
+- ### Get Book Details
+Endpoint
+```bash
+GET https://643e8199c72fda4a0bf883df.mockapi.io/api/v1/books/{id}
+```
+Example Response
+```json
+{
+    "Title": "totam",
+    "author": "Edmund Trantow",
+    "image": "https://loremflickr.com/640/480/technics",
+    "rating": 55,
+    "published": "1951-06-09T09:24:48.879Z",
+    "description": "Animi a pariatur eveniet perspiciatis quo at eaque doloribus. Deserunt accusamus voluptatum vel. Error expedita laborum pariatur atque fugit ad officia similique. Voluptatum alias quae neque occaecati fugiat incidunt enim nobis deleniti. Eos aut sequi hic enim eos voluptatem voluptatibus tenetur.",
+    "id": "2"
+}
+```
+## Design Reference
+You can see the design reference here: [https://www.figma.com/file/57WmI9mY1GtwpDtW6KUc24/My-Book-Shelf-(Community)?type=design&node-id=1-2&t=ixE7oRMhNE5GZwcd-0](https://www.figma.com/file/57WmI9mY1GtwpDtW6KUc24/My-Book-Shelf-(Community)?type=design&node-id=1-2&t=ixE7oRMhNE5GZwcd-0)
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Let's Connect
+- [LinkedIn](https://www.linkedin.com/in/lintang-luthfiantoni-4747a61ab/)
+- [WhatsApp](https://wa.me/6282148507278)
