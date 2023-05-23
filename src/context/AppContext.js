@@ -113,10 +113,10 @@ export const AppContextProvider = ({ children }) => {
             type: "LOGIN_SUCCESS",
             payload,
           });
+        } else {
+          throw new Error("Login Failed");
         }
-      } else {
-        throw new Error("Login Failed");
-      }
+      } 
     } catch (error) {
       dispatch({ type: "LOGIN_FAILED" });
       // alert(error);
