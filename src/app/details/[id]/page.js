@@ -88,8 +88,8 @@ export default function BookDetails() {
 
             <div className="flex items-center">
               <div className="flex gap-1">
-                {[1, 2, 3, 4, 5].map(() => (
-                  <StarIcon />
+                {[1, 2, 3, 4, 5].map((num) => (
+                  <StarIcon key={num} />
                 ))}
               </div>
 

@@ -76,41 +76,44 @@ export const AppContext = createContext({
 export const AppContextProvider = ({ children }) => {
   const [auth, dispatch] = useReducer(reducer, initialState);
   const [searchBookKeyword, setSearchBookKeyword] = useState("");
-  const token = getCookie("token") || sessionStorage.getItem("token");
+  const token = getCookie("token");
 
   const authenticateUser = () => {
     try {
-      dispatch({ type: "LOGIN_LOADING" });
+      if (typeof window === "object") {
+        dispatch({ type: "LOGIN_LOADING" });
 
-      if (token) {
-        const username =
-          getCookie("username") || sessionStorage.getItem("username");
-        const email = getCookie("email") || sessionStorage.getItem("email");
-        const password =
-          getCookie("password") || sessionStorage.getItem("password");
-        const firstName =
-          getCookie("firstName") || sessionStorage.getItem("firstName");
-        const lastName =
-          getCookie("lastName") || sessionStorage.getItem("lastName");
-        const gender = getCookie("gender") || sessionStorage.getItem("gender");
-        const image = getCookie("image") || sessionStorage.getItem("image");
+        if (token || sessionStorage.getItem("token")) {
+          const username =
+            getCookie("username") || sessionStorage.getItem("username");
+          const email = getCookie("email") || sessionStorage.getItem("email");
+          const password =
+            getCookie("password") || sessionStorage.getItem("password");
+          const firstName =
+            getCookie("firstName") || sessionStorage.getItem("firstName");
+          const lastName =
+            getCookie("lastName") || sessionStorage.getItem("lastName");
+          const gender =
+            getCookie("gender") || sessionStorage.getItem("gender");
+          const image = getCookie("image") || sessionStorage.getItem("image");
 
-        const payload = {
-          id: 15,
-          username,
-          email,
-          firstName,
-          lastName,
-          gender,
-          image,
-          token,
-        };
+          const payload = {
+            id: 15,
+            username,
+            email,
+            firstName,
+            lastName,
+            gender,
+            image,
+            token: token || sessionStorage.getItem("token"),
+          };
 
-        createSession({ ...payload, password });
-        dispatch({
-          type: "LOGIN_SUCCESS",
-          payload,
-        });
+          createSession({ ...payload, password });
+          dispatch({
+            type: "LOGIN_SUCCESS",
+            payload,
+          });
+        }
       } else {
         throw new Error("Login Failed");
       }
@@ -122,7 +125,7 @@ export const AppContextProvider = ({ children }) => {
 
   useEffect(() => {
     authenticateUser();
-  }, [token]);
+  }, [token, typeof window]);
 
   return (
     <AppContext.Provider
